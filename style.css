@@ -1,3 +1,34 @@
 *{
-    
+    box-sizing: border-box;
+    padding: 0%;
+    margin: 0%;
+}
+body{
+    background-color: oklch(0% 0 0);
+    color:oklch(88.282% 0.18104 94.468);
+    font-family: sans-serif;
+}
+.topbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: oklch(44.96% 0.20169 261.585 / 0.595);
+}
+.objekteven{
+    display: flex;
+}
+.objektodd{
+    background-color: oklch(44.96% 0.20169 261.585 / 0.595);
+}
+.objektfocus{
+    background-color: oklch(86.668% 0.29289 142.716 / 0.595);
+}
+.line{
+    position:absolute;
+    height:5px;
+    width:100%;
+    background-color: oklch(62.793% 0.25768 29.223 / 0.627);
+    border: 1px solid oklch(100% 0.00011 271.152);
+
 }

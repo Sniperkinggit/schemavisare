@@ -28,42 +28,35 @@
     $datehour = intval(date("H"));
     $dateminute = intval(date("i"));
     $datesecond = intval(date("s"));
-    function getpositionforitemswithdate($datehourf, $dateminutef, $datesecondf) {
-        $secondsSinceMidnight = $datehourf * 3600 + $dateminutef * 60 + $datesecondf;
-        $fixedtime = (($secondsSinceMidnight / 86400) * 100)-33;
-        return number_format($fixedtime,4);
-    }
-    
     ?>
     <div class="topbar">
         <h1><?php echo $dateday . ' ' . sprintf('%02d:%02d:%02d', $datehour, $dateminute, $datesecond); ?></h1>
     </div>
-    <div class="line" style="margin-top:<?php echo getpositionforitemswithdate($datehour, $dateminute, $datesecond); ?>%;"></div>
-    <div class="objekteven" style="margin-top:<?php echo getpositionforitemswithdate(8, 30, 00); ?>%;">
+    <div class="objekteven2">
         <h1>
             test for stuff<br>
             08:30 Stockholm C
         </h1>
     </div>
-    <div class="objektodd" style="margin-top:<?php echo getpositionforitemswithdate(9, 15, 00); ?>%; height:100px;">
+    <div class="objektodd2">
         <h1>
             test for stuff<br>
             09:15 Stockholm C
         </h1>
     </div>
-    <div class="objektfocus" style="margin-top:<?php echo getpositionforitemswithdate(10, 0, 0); ?>%;">
+    <div class="objektfocus2">
         <h1>
             test for stuff Aktiv nu<br>
             10:00 Stockholm C
         </h1>
     </div>
-    <div class="objektodd" style="margin-top:<?php echo getpositionforitemswithdate(20, 0, 0); ?>%;">
+    <div class="objektodd2">
         <h1>
             test for stuff Aktiv nu<br>
             20:00 Stockholm C
         </h1>
     </div>
-    <div class="objektfocus" style="margin-top:<?php echo getpositionforitemswithdate(23, 59, 0); ?>%;">
+    <div class="objekteven2">
         <h1>
             test for stuff Aktiv nu<br>
             23:59 Stockholm C

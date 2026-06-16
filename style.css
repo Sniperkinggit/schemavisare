@@ -16,13 +16,15 @@ body{
     background-color: oklch(44.96% 0.20169 261.585 / 0.595);
 }
 .objekteven{
-    display: flex;
+    position:absolute;
 }
 .objektodd{
     background-color: oklch(44.96% 0.20169 261.585 / 0.595);
+    position:absolute;
 }
 .objektfocus{
     background-color: oklch(86.668% 0.29289 142.716 / 0.595);
+    position:absolute;
 }
 .line{
     position:absolute;
@@ -31,4 +33,10 @@ body{
     background-color: oklch(62.793% 0.25768 29.223 / 0.627);
     border: 1px solid oklch(100% 0.00011 271.152);
 
+}
+.objektodd2{
+    background-color: oklch(44.96% 0.20169 261.585 / 0.595);
+}
+.objektfocus2{
+    background-color: oklch(86.668% 0.29289 142.716 / 0.595);
 }

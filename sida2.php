@@ -27,6 +27,12 @@
     } elseif ($weekday == "Sunday") {
         $dateday = "Söndag";
     }
+    $_SESSION['dateday'] = isset($_SESSION['dateday']) ? $_SESSION['dateday'] : null;
+    if ($dateday != $_SESSION['dateday']) {
+        $_SESSION['dateday'] = $dateday;
+        $_SESSION['infocush'] = null;
+        $_SESSION['infocusm'] = null;
+    }
     $datehour = intval(date("H"));
     $dateminute = intval(date("i"));
     $datesecond = intval(date("s"));

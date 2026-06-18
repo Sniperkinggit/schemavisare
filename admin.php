@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php require_once("asset.php"); 
+<?php require_once("asset.php");
 if (isset($_POST['password'])) {
     if (md5($_POST['password']) === "8a6eb4f0e2de6c579111dac412a5bd83") {
         $_SESSION['admin'] = true;
@@ -12,6 +12,8 @@ if (isset($_POST['logout'])) {
     header("Location: admin.php");
     exit();
 }
+if (isset($_SESSION['admin']) || $_SESSION['admin'] == true){
+
 if (isset($_POST['delete_id'])) {
     $delete_id = mysqli_real_escape_string($conn, $_POST['delete_id']);
     $sql = "DELETE FROM activiteter WHERE id='$delete_id'";
@@ -47,6 +49,7 @@ if (isset($_POST['edit_id'])) {
         header("Location: admin.php");
         exit();
     }
+}
 }
 ?>
 <html lang="en">

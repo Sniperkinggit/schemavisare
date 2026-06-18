@@ -12,13 +12,27 @@ if (isset($_POST['logout'])) {
     header("Location: admin.php");
     exit();
 }
+if (isset($_POST['sort'])) {
+    $sort_date = $_POST['sort_date'];
+    header("Location: admin.php?sort_date=" . $sort_date);
+    exit();
+}
+if (isset($_GET['sort_date'])) {
+    $sort_date = $_GET['sort_date'];
+    $ownlink = "admin.php?sort_date=" . $sort_date;
+    $issort = true;
+}else{
+    $ownlink = "admin.php";
+    $issort = false;
+}
+
 if (isset($_SESSION['admin']) || $_SESSION['admin'] == true){
 
 if (isset($_POST['delete_id'])) {
     $delete_id = mysqli_real_escape_string($conn, $_POST['delete_id']);
     $sql = "DELETE FROM activiteter WHERE id='$delete_id'";
     mysqli_query($conn, $sql);
-    header("Location: admin.php");
+    header("Location: " . $ownlink);
     exit();
 }
 if (isset($_POST['edit_id'])) {
@@ -31,7 +45,7 @@ if (isset($_POST['edit_id'])) {
     $info = $row['info'];
     ?>
     <h1>Redigera aktivitet</h1>
-    <form action="admin.php" method="post">
+    <form action="<?php echo $ownlink; ?>" method="post">
         <input type="hidden" name="edit_id" value="<?php echo $edit_id; ?>">
         <input type="text" name="name" placeholder="Namn" value="<?php echo $name; ?>" required><br>
         <input type="datetime-local" name="begin" value="<?php echo $begin; ?>" required><br>
@@ -46,7 +60,7 @@ if (isset($_POST['edit_id'])) {
         $edit_id = mysqli_real_escape_string($conn, $_POST['edit_id']);
         $sql = "UPDATE activiteter SET name='$name', begin='$begin', info='$info' WHERE id='$edit_id'";
         mysqli_query($conn, $sql);
-        header("Location: admin.php");
+        header("Location: " . $ownlink);
         exit();
     }
 }
@@ -72,13 +86,13 @@ if (isset($_POST['edit_id'])) {
     </form>
     <?php }else{?>
     <h1>Admin</h1>
-    <form action="admin.php" method="post">
+    <form action="<?php echo $ownlink; ?>" method="post">
         <input type="submit" name="logout" value="Logga ut">
     </form>
     <form action="index.php" method="post">
         <input type="submit" value="tillbaka till chemat">
     </form>
-    <form action="admin.php" method="post">
+    <form action="<?php echo $ownlink; ?>" method="post">
         <input type="text" name="name" placeholder="Namn" required><br>
         <input type="datetime-local" name="begin" required><br>
         <input type="text" name="info" placeholder="Info"><br>
@@ -91,15 +105,30 @@ if (isset($_POST['edit_id'])) {
         $info = mysqli_real_escape_string($conn, $_POST['info']);
         $sql = "INSERT INTO activiteter (name, begin, info) VALUES ('$name', '$begin', '$info')";
         mysqli_query($conn, $sql);
-        header("Location: admin.php");
+        header("Location:" . $ownlink);
         exit();
-    }
+    }?>
+    <h2>Aktiviteter</h2>
+    <?php if ($issort){ ?>
+    <form action="admin.php" method="post">
+        <input type="date" name="sort_date" required>
+        <input type="submit" name="sort" value="Sortera efter datum">
+    </form>
+    <?php }else{ ?>
+    <form action="admin.php" method="post">
+        <input type="submit" name="sort" value="Sortera ej efter datum">
+    </form>
+    <?php }
+    if ($issort) {
+        $sql = "SELECT * FROM activiteter WHERE DATE(begin) = '$sort_date' ORDER BY begin ASC";
+    } else {
     $sql = "SELECT * FROM activiteter ORDER BY begin ASC";
+    }
     $result = mysqli_query($conn, $sql);
     while($row = mysqli_fetch_assoc($result)) {
         echo "<p>" . $row['name'] . " - " . $row['begin'] . " - " . $row['info'] . "</p>";
-        echo "<form action='admin.php' method='post'><input type='hidden' name='delete_id' value='" . $row['id'] . "'><input type='submit' value='Ta bort'></form>";
-        echo "<form action='admin.php' method='post'><input type='hidden' name='edit_id' value='" . $row['id'] . "'><input type='submit' value='Redigera'></form>";
+        echo "<form action=" . $ownlink . " method='post'><input type='hidden' name='delete_id' value='" . $row['id'] . "'><input type='submit' value='Ta bort'></form>";
+        echo "<form action=" . $ownlink . " method='post'><input type='hidden' name='edit_id' value='" . $row['id'] . "'><input type='submit' value='Redigera'></form>";
     } }?>
 </body>
 </html>

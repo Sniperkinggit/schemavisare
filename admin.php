@@ -108,7 +108,7 @@ if (isset($_POST['edit_id'])) {
         header("Location:" . $ownlink);
         exit();
     }?>
-    <h2>Aktiviteter</h2>
+    <h2>Aktiviteter <?php if (isset($sort_date)) { echo " Sorterade efter " . $sort_date; } ?></h2>
     <?php if ($issort == false){ ?>
     <form action="admin.php" method="post">
         <input type="date" name="sort_date" required>

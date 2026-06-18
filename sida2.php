@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php require_once("asset.php"); ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,7 +10,7 @@
 </head>
 <body>
     <?php
-    session_start();
+
     $weekday = date("l");
     if ($weekday == "Monday") {
         $dateday = "Måndag";
@@ -58,47 +59,22 @@
     <div class="topbar">
         <h1><?php echo $dateday . ' ' . sprintf('%02d:%02d:%02d', $datehour, $dateminute, $datesecond); ?></h1>
     </div>
-    <?php $step += 1; ?>
-    <div class=<?php echo donamestep(13,23); ?>>
+    <?php
+    $sql = "SELECT * FROM `activiteter` ORDER BY `begin` ASC";
+    $result = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_assoc($result)) {
+        $begin = new DateTime($row['begin']);
+        $timehour = intval($begin->format('H'));
+        $timemin = intval($begin->format('i'));
+        $name = $row['name'];
+        $info = $row['info'];
+    $step += 1; ?>
+    <div class=<?php echo donamestep($timehour, $timemin); ?> >
         <h2>
-            test for stuff <?php echo isfocus(13,23); ?><br>
-            13:23 Stockholm C
+            <?php echo $name; ?> <?php echo isfocus($timehour, $timemin); ?><br>
+            <?php echo $begin->format('H:i'); ?> <?php echo $info; ?>
         </h2>
     </div>
-    <?php $step += 1; ?>
-    <div class=<?php echo donamestep(15,0); ?>>
-        <h2>
-            test for stuff <?php echo isfocus(15,0); ?><br>
-            15:00 Stockholm C
-        </h2>
-    </div>
-    <?php $step += 1; ?>
-    <div class=<?php echo donamestep(15,1); ?>>
-        <h2>
-            test for stuff <?php echo isfocus(15,1); ?><br>
-            15:01 Stockholm C
-        </h2>
-    </div>
-    <?php $step += 1; ?>
-    <div class=<?php echo donamestep(16,1); ?>>
-        <h2 >
-            test for stuff <?php echo isfocus(16,1); ?><br>
-            16:01 Stockholm C
-        </h2>
-    </div>
-    <?php $step += 1; ?>
-    <div class=<?php echo donamestep(17,1); ?>>
-        <h2 >
-            test for stuff <?php echo isfocus(17,1); ?><br>
-            17:01 Stockholm C
-        </h2>
-    </div>
-    <?php $step += 1; ?>
-    <div class=<?php echo donamestep(18,1); ?>>
-        <h2 >
-            test for stuff <?php echo isfocus(18,1); ?><br>
-            18:01 Stockholm C
-        </h2>
-    </div>
+        <?php } ?>
 </body>
 </html>

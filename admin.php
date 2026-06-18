@@ -109,17 +109,17 @@ if (isset($_POST['edit_id'])) {
         exit();
     }?>
     <h2>Aktiviteter</h2>
-    <?php if ($issort){ ?>
+    <?php if ($issort == false){ ?>
     <form action="admin.php" method="post">
         <input type="date" name="sort_date" required>
         <input type="submit" name="sort" value="Sortera efter datum">
     </form>
     <?php }else{ ?>
     <form action="admin.php" method="post">
-        <input type="submit" name="sort" value="Sortera ej efter datum">
+        <input type="submit" name="ojsort" value="Sortera ej efter datum">
     </form>
     <?php }
-    if ($issort) {
+    if ($issort == true) {
         $sql = "SELECT * FROM activiteter WHERE DATE(begin) = '$sort_date' ORDER BY begin ASC";
     } else {
     $sql = "SELECT * FROM activiteter ORDER BY begin ASC";

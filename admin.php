@@ -119,6 +119,7 @@ if (isset($_POST['edit_id'])) {
         <input type="submit" name="ojsort" value="Sortera ej efter datum">
     </form>
     <?php }
+    echo "<div style='height: 1px; width: 100%; background-color: oklch(88.282% 0.18104 94.468);'></div>";
     if ($issort == true) {
         $sql = "SELECT * FROM activiteter WHERE DATE(begin) = '$sort_date' ORDER BY begin ASC";
     } else {
@@ -129,6 +130,7 @@ if (isset($_POST['edit_id'])) {
         echo "<p>" . $row['name'] . " - " . $row['begin'] . " - " . $row['info'] . "</p>";
         echo "<form action=" . $ownlink . " method='post'><input type='hidden' name='delete_id' value='" . $row['id'] . "'><input type='submit' value='Ta bort'></form>";
         echo "<form action=" . $ownlink . " method='post'><input type='hidden' name='edit_id' value='" . $row['id'] . "'><input type='submit' value='Redigera'></form>";
+        echo "<div style='height: 1px; width: 100%; background-color: oklch(88.282% 0.18104 94.468);'></div>";
     } }?>
 </body>
 </html>

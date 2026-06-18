@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php require_once("asset.php"); 
 if (isset($_POST['password'])) {
-    if (md5($_POST['password']) === "c4ca4238a0b923820dcc509a6f75849b") {
+    if (md5($_POST['password']) === "8a6eb4f0e2de6c579111dac412a5bd83") {
         $_SESSION['admin'] = true;
         header("Location: admin.php");
         exit();

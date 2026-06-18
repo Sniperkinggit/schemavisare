@@ -70,7 +70,7 @@ if (isset($_POST['edit_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chemavisare admin <?=date("Y")?></title>
+    <title>Schemavisare admin <?=date("Y")?></title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -82,7 +82,7 @@ if (isset($_POST['edit_id'])) {
             <input type="submit" value="Logga in">
         </form>
         <form action="index.php" method="post">
-        <input type="submit" value="tillbaka till chemat">
+        <input type="submit" value="tillbaka till Schemat">
     </form>
     <?php }else{?>
     <h1>Admin</h1>
@@ -90,7 +90,7 @@ if (isset($_POST['edit_id'])) {
         <input type="submit" name="logout" value="Logga ut">
     </form>
     <form action="index.php" method="post">
-        <input type="submit" value="tillbaka till chemat">
+        <input type="submit" value="tillbaka till Schemat">
     </form>
     <form action="<?php echo $ownlink; ?>" method="post">
         <input type="text" name="name" placeholder="Namn" required><br>

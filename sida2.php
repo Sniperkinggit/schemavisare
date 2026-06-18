@@ -82,7 +82,7 @@
     <div class=<?php echo donamestep($timehour, $timemin); ?> >
         <h2>
             <?php echo $name; ?> <?php echo isfocus($timehour, $timemin); ?><br>
-            <?php echo $begin->format('H:i'); ?> <?php echo $info; ?>
+            <?php echo $begin->format('H:i'); ?> <?= $info ? 'info: ' . $info : ''; ?>
         </h2>
     </div>
         <?php } ?>

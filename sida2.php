@@ -70,6 +70,10 @@
     $result = mysqli_query($conn, $sql);
     while($row = mysqli_fetch_assoc($result)) {
         $begin = new DateTime($row['begin']);
+        $timedate = $begin->format('Y-m-d');
+        if ($timedate != date("Y-m-d")) {
+            continue;
+        }
         $timehour = intval($begin->format('H'));
         $timemin = intval($begin->format('i'));
         $name = $row['name'];

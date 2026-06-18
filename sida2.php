@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<?php require_once("asset.php"); ?>
+<?php require_once("asset.php"); 
+$_SESSION['admin'] = false;?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -88,3 +89,10 @@
         <?php } ?>
 </body>
 </html>
+<script>
+    addEventListener("keydown", function(event) {
+        if (event.key === ".") {
+            window.location.href = "admin.php";
+        }
+    });
+</script>

@@ -62,10 +62,16 @@ if (isset($_POST['edit_id'])) {
             <input type="password" name="password" placeholder="Lösenord" required><br>
             <input type="submit" value="Logga in">
         </form>
+        <form action="index.php" method="post">
+        <input type="submit" value="tillbaka till chemat">
+    </form>
     <?php }else{?>
     <h1>Admin</h1>
     <form action="admin.php" method="post">
         <input type="submit" name="logout" value="Logga ut">
+    </form>
+    <form action="index.php" method="post">
+        <input type="submit" value="tillbaka till chemat">
     </form>
     <form action="admin.php" method="post">
         <input type="text" name="name" placeholder="Namn" required><br>

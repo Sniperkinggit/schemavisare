@@ -43,3 +43,10 @@ body{
     width: 100%;
     background-color: oklch(88.282% 0.18104 94.468);
 }
+.shift-form{
+    border-top: 1px solid oklch(88.282% 0.18104 94.468);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid oklch(88.282% 0.18104 94.468);
+    margin-bottom: 10px;
+}

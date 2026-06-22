@@ -28,6 +28,20 @@ if (isset($_GET['sort_date'])) {
 
 if (isset($_SESSION['admin']) || $_SESSION['admin'] == true){
 
+if(isset($_POST['shift'])){
+    $shift_date = date("Y-m-d", strtotime($_POST['shift_date']));
+    $shift_time = date("H:i", strtotime($_POST['shift_time']));
+    $shift_amount = date("H:i", strtotime($_POST['shift_amount']));
+    $sql = "UPDATE activiteter SET begin = DATE_ADD(begin, INTERVAL '$shift_amount' HOUR_MINUTE) WHERE DATE(begin) = '$shift_date' AND TIME(begin) >= '$shift_time'";
+    mysqli_query($conn, $sql);
+    header("Location: " . $ownlink);
+    exit();
+
+}
+if(isset($_POST['shift_back'])){
+
+}
+
 if (isset($_POST['delete_id'])) {
     $delete_id = mysqli_real_escape_string($conn, $_POST['delete_id']);
     $sql = "DELETE FROM activiteter WHERE id='$delete_id'";
@@ -109,6 +123,16 @@ if (isset($_POST['edit_id'])) {
         exit();
     }?>
     <h2>Aktiviteter <?php if (isset($sort_date)) { echo " Sorterade efter " . $sort_date; } ?></h2>
+    <form action="admin.php" method="post" class="shift-form">
+        <h3>Förskjut aktiviteter</h3>
+        <p>datum och tid:</p>
+        <input type="date" name="shift_date" required>
+        <input type="time" name="shift_time" required> <br>
+        <p>förskjutning:</p>
+        <input type="time" name="shift_amount" required value="00:00">  <br>
+        <input type="submit" name="shift" value="Förskjut framåt">
+        <input type="submit" name="shift_back" value="Förskjut bakåt">
+    </form>
     <?php if ($issort == false){ ?>
     <form action="admin.php" method="post">
         <input type="date" name="sort_date" required>
@@ -131,6 +155,7 @@ if (isset($_POST['edit_id'])) {
         echo "<form action=" . $ownlink . " method='post'><input type='hidden' name='delete_id' value='" . $row['id'] . "'><input type='submit' value='Ta bort'></form>";
         echo "<form action=" . $ownlink . " method='post'><input type='hidden' name='edit_id' value='" . $row['id'] . "'><input type='submit' value='Redigera'></form>";
         echo "<div class='line'></div>";
-    } }?>
+    }
+    }?>
 </body>
 </html>

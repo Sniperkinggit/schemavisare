@@ -39,7 +39,13 @@ if(isset($_POST['shift'])){
 
 }
 if(isset($_POST['shift_back'])){
-
+    $shift_date = date("Y-m-d", strtotime($_POST['shift_date']));
+    $shift_time = date("H:i", strtotime($_POST['shift_time']));
+    $shift_amount = date("H:i", strtotime($_POST['shift_amount']));
+    $sql = "UPDATE activiteter SET begin = DATE_SUB(begin, INTERVAL '$shift_amount' HOUR_MINUTE) WHERE DATE(begin) = '$shift_date' AND TIME(begin) >= '$shift_time'";
+    mysqli_query($conn, $sql);
+    header("Location: " . $ownlink);
+    exit();
 }
 
 if (isset($_POST['delete_id'])) {

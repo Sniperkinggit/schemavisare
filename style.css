@@ -14,6 +14,7 @@ body{
     align-items: center;
     height: 100px;
     background-color: oklch(44.96% 0.20169 261.585 / 0.595);
+    border-radius:0 0 10px 10px;
 }
 .objekteven2{
     width:100%;

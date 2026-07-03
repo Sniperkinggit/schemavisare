@@ -30,6 +30,7 @@ body{
     justify-content: space-between;
     background-color: oklch(44.96% 0.20169 261.585 / 0.595);
     padding-left: 20px;
+    border-radius: 10px;
 }
 .objektfocus2{
     width:100%;
@@ -38,6 +39,7 @@ body{
     justify-content: space-between;
     background-color: oklch(86.668% 0.29289 142.716 / 0.595);
     padding-left: 20px;
+    border-radius: 10px;
 }
 .line{
     height: 1px;

@@ -81,9 +81,18 @@ $_SESSION['admin'] = false;?>
         $info = $row['info'];
     $step += 1; ?>
     <div class=<?php echo donamestep($timehour, $timemin); ?> >
-        <h2>
-            <?php echo $name; ?> <?php echo isfocus($timehour, $timemin); ?><br>
-            <?php echo $begin->format('H:i'); ?> <?= $info ? 'info: ' . $info : ''; ?>
+        <h2 class="activity">
+            <div class="time"><?php echo $begin->format('H:i'); ?></div> 
+            <div class="nameninfo"> 
+                <div class="name">
+                    <?php echo $name; ?>
+                </div>
+                <?php if ($info) { ?>
+                     <div class="info">
+                        <?php echo $info; ?>
+                     </div>
+                <?php } ?>
+            </div>
         </h2>
     </div>
         <?php } ?>

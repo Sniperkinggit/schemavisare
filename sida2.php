@@ -71,7 +71,7 @@ $_SESSION['admin'] = false;?>
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
-            echo "<h1>Dagstema: " . $row['tema'] . "</h1>";
+            echo "<h1>" . $row['tema'] . "</h1>";
         } ?> 
     </div>
     <?php

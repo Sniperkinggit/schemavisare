@@ -65,6 +65,14 @@ $_SESSION['admin'] = false;?>
     ?>
     <div class="topbar">
         <h1><?php echo $dateday . ' ' . sprintf('%02d:%02d:%02d', $datehour, $dateminute, $datesecond); ?></h1>
+        
+        <?php
+        $sql = "SELECT * FROM `dagstema` WHERE `begin` = CURDATE()";
+        $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            echo "<h1>Dagstema: " . $row['tema'] . "</h1>";
+        } ?> 
     </div>
     <?php
     $sql = "SELECT * FROM `activiteter` ORDER BY `begin` ASC";

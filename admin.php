@@ -84,6 +84,21 @@ if (isset($_POST['edit_id'])) {
         exit();
     }
 }
+if (isset($_POST['daytheme']) && isset($_POST['daytheme_date'])) {
+    $daytheme = mysqli_real_escape_string($conn, $_POST['daytheme']);
+    $daytheme_date = mysqli_real_escape_string($conn, $_POST['daytheme_date']);
+    $sql = "INSERT INTO dagstema (begin, tema) VALUES ('$daytheme_date', '$daytheme')";
+    mysqli_query($conn, $sql);
+    header("Location: " . $ownlink);
+    exit();
+}
+if (isset($_POST['delete_theme'])) {
+    $delete_theme_id = mysqli_real_escape_string($conn, $_POST['delete_theme_id']);
+    $sql = "DELETE FROM dagstema WHERE id='$delete_theme_id'";
+    mysqli_query($conn, $sql);
+    header("Location: " . $ownlink);
+    exit();
+}
 }
 ?>
 <html lang="en">
@@ -128,6 +143,27 @@ if (isset($_POST['edit_id'])) {
         header("Location:" . $ownlink);
         exit();
     }?>
+    <h2>Dagstema</h2>
+    <div class="line"></div>
+    <form action="admin.php" method="post">
+        <input type="text" name="daytheme" placeholder="Dagstema" required><br>
+        <input type="date" name="daytheme_date" required><br>
+        <input type="submit" value="Spara">
+    </form>
+        <div class="dropdown-content">
+            <?php
+            $sql = "SELECT * FROM dagstema ORDER BY begin DESC";
+            $result = mysqli_query($conn, $sql);
+            while($row = mysqli_fetch_assoc($result)) { ?>
+                <p> <?php echo $row['begin'] ?> -  <?php echo $row['tema'] ?> </p>
+                <form action="admin.php" method="post">
+                    <input type="hidden" name="delete_theme_id" value="<?php echo $row['id'] ?>">
+                    <input type="submit" name="delete_theme" value="Ta bort">
+                </form>
+            <?php
+            } ?>
+        </div>
+    <div class="line"></div>
     <h2>Aktiviteter <?php if (isset($sort_date)) { echo " Sorterade efter " . $sort_date; } ?></h2>
     <form action="admin.php" method="post" class="shift-form">
         <h3>Förskjut aktiviteter</h3>

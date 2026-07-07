@@ -33,39 +33,21 @@ if (isset($_POST['date'])) {
     } elseif ($weekday == "Sunday") {
         $dateday = "Söndag";
     }
-    $_SESSION['dateday'] = isset($_SESSION['dateday']) ? $_SESSION['dateday'] : null;
-    if ($dateday != $_SESSION['dateday']) {
-        $_SESSION['dateday'] = $dateday;
-        $_SESSION['infocush'] = null;
-        $_SESSION['infocusm'] = null;
-    }
+    
     $datehour = intval(date("H", strtotime($selectedDate)));
     $dateminute = intval(date("i", strtotime($selectedDate)));
     $datesecond = intval(date("s", strtotime($selectedDate)));
     $step = -1;
-    $_SESSION['infocush'] = isset($_SESSION['infocush']) ? $_SESSION['infocush'] : null;
-    $_SESSION['infocusm'] = isset($_SESSION['infocusm']) ? $_SESSION['infocusm'] : null;
+    
     function donamestep($h, $m) {
         global $step;
-        global $_SESSION;
-        global $infocush;
-        global $infocusm;
         global $datehour;
         global $dateminute;
-        if ($h == $datehour && $m == $dateminute) {
-            $_SESSION['infocush'] = $h;
-            $_SESSION['infocusm'] = $m;
-        }
-        if ($h == $_SESSION['infocush'] && $m == $_SESSION['infocusm']) {
-            return "objektfocus2";
-        } elseif ($step % 2 == 0) {
+        if ($step % 2 == 0) {
             return "objekteven2";
         } else {
             return "objektodd2";
         }
-    }
-    function isfocus($h, $m) {
-        if(donamestep($h, $m) == "objektfocus2") { return "Aktiv nu"; } 
     }
     ?>
     <div class="higherbar">
@@ -80,7 +62,7 @@ if (isset($_POST['date'])) {
         <h1><?php echo $dateday; ?></h1>
         
         <?php
-        $sql = "SELECT * FROM `dagstema` WHERE `begin` = CURDATE()";
+        $sql = "SELECT * FROM `dagstema` WHERE `begin` = '$selectedDate'";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);

@@ -112,4 +112,9 @@ $_SESSION['admin'] = false;?>
             window.location.href = "admin.php";
         }
     });
+    addEventListener("keydown", function(event) {
+        if (event.key === ",") {
+            window.location.href = "index.php";
+        }
+    });
 </script>

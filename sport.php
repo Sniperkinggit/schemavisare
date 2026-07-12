@@ -70,3 +70,20 @@ $_SESSION['admin'] = false; ?>
         <?php } ?>
 </body>
 </html>
+<script>
+    addEventListener("keydown", function(event) {
+        if (event.key === ".") {
+            window.location.href = "admin.php";
+        }
+    });
+    addEventListener("keydown", function(event) {
+        if (event.key === ",") {
+            window.location.href = "sida2.php";
+        }
+    });
+    addEventListener("keydown", function(event) {
+        if (event.key === "-") {
+            window.location.href = "index.php";
+        }
+    });
+</script>

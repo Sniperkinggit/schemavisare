@@ -79,7 +79,11 @@ if (isset($_POST['date'])) {
         } ?> 
     </div>
     <?php
-    $sql = "SELECT * FROM `activiteter` ORDER BY `begin` ASC";
+    if ($sport == 0) {
+        $sql = "SELECT * FROM `activiteter` ORDER BY `begin` ASC";
+    } else {
+        $sql = "SELECT * FROM `sport` ORDER BY `begin` ASC";
+    }
     $result = mysqli_query($conn, $sql);
     while($row = mysqli_fetch_assoc($result)) {
         $begin = new DateTime($row['begin']);

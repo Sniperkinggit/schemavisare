@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Värd: 127.0.0.1
--- Tid vid skapande: 06 jul 2026 kl 21:29
--- Serverversion: 10.4.32-MariaDB
--- PHP-version: 8.2.12
+-- Host: 127.0.0.1
+-- Generation Time: Jul 12, 2026 at 04:53 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Databas: `chemavisare`
+-- Database: `chemavisare`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `activiteter`
+-- Table structure for table `activiteter`
 --
 
 CREATE TABLE `activiteter` (
@@ -35,7 +35,7 @@ CREATE TABLE `activiteter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumpning av Data i tabell `activiteter`
+-- Dumping data for table `activiteter`
 --
 
 INSERT INTO `activiteter` (`id`, `name`, `begin`, `info`) VALUES
@@ -103,7 +103,7 @@ INSERT INTO `activiteter` (`id`, `name`, `begin`, `info`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `dagstema`
+-- Table structure for table `dagstema`
 --
 
 CREATE TABLE `dagstema` (
@@ -113,7 +113,7 @@ CREATE TABLE `dagstema` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumpning av Data i tabell `dagstema`
+-- Dumping data for table `dagstema`
 --
 
 INSERT INTO `dagstema` (`id`, `tema`, `begin`) VALUES
@@ -123,37 +123,62 @@ INSERT INTO `dagstema` (`id`, `tema`, `begin`) VALUES
 (13, 'Kungen och hans barn', '2026-07-24'),
 (14, 'Min kung och jag', '2026-07-25');
 
+-- --------------------------------------------------------
+
 --
--- Index för dumpade tabeller
+-- Table structure for table `sport`
+--
+
+CREATE TABLE `sport` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `begin` date NOT NULL DEFAULT current_timestamp(),
+  `info` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Index för tabell `activiteter`
+-- Indexes for table `activiteter`
 --
 ALTER TABLE `activiteter`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index för tabell `dagstema`
+-- Indexes for table `dagstema`
 --
 ALTER TABLE `dagstema`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT för dumpade tabeller
+-- Indexes for table `sport`
+--
+ALTER TABLE `sport`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT för tabell `activiteter`
+-- AUTO_INCREMENT for table `activiteter`
 --
 ALTER TABLE `activiteter`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
--- AUTO_INCREMENT för tabell `dagstema`
+-- AUTO_INCREMENT for table `dagstema`
 --
 ALTER TABLE `dagstema`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `sport`
+--
+ALTER TABLE `sport`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

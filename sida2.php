@@ -3,7 +3,7 @@
 $_SESSION['admin'] = false;
 if (isset($_POST['date'])) {
     $selectedDate = $_POST['date'];
-    if (isset $_POST["sportchema"]) {
+    if (isset($_POST["sportchema"])) {
         $sport=true;
     } else {
         $sport=false;

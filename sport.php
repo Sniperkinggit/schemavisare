@@ -28,7 +28,7 @@ $_SESSION['admin'] = false; ?>
     ?>
     <div class="higherbar">
         <form method="POST" action="sida2.php">
-            <input type="date" name="date" value="<?=date("Y-m-d", strtotime($selectedDate))?>">
+            <input type="date" name="date" value="<?=date("Y-m-d")?>">
             <label for="sportchema">Sportchema:</label>
             <input type="checkbox" name="sportchema" value="1" <?php if($sport==1) echo "checked"; ?>>
             <input type="submit" value="visa">
@@ -41,7 +41,7 @@ $_SESSION['admin'] = false; ?>
         <h1>Sport</h1>
         
         <?php
-        $sql = "SELECT * FROM `dagstema` WHERE `begin` = '$selectedDate'";
+        $sql = "SELECT * FROM `dagstema` WHERE `begin` = 'date("Y-m-d")'";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);

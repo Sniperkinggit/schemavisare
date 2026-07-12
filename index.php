@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <?php require_once("asset.php"); 
-$_SESSION['admin'] = false;
-if (isset($_POST['date'])) {
-    $selectedDate = $_POST['date'];
-} else {
-    $selectedDate = date("Y-m-d");
-}
-?>
+$_SESSION['admin'] = false;?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schemavisare<?=date("Y", strtotime($selectedDate))?></title>
+    <meta http-equiv="refresh" content="1">
+    <title>Schemavisare<?=date("Y")?></title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <?php
 
-    $weekday = date("l", strtotime($selectedDate));
+    $weekday = date("l");
     if ($weekday == "Monday") {
         $dateday = "Måndag";
     } elseif ($weekday == "Tuesday") {
@@ -33,36 +28,46 @@ if (isset($_POST['date'])) {
     } elseif ($weekday == "Sunday") {
         $dateday = "Söndag";
     }
-    
-    $datehour = intval(date("H", strtotime($selectedDate)));
-    $dateminute = intval(date("i", strtotime($selectedDate)));
-    $datesecond = intval(date("s", strtotime($selectedDate)));
+    $_SESSION['dateday'] = isset($_SESSION['dateday']) ? $_SESSION['dateday'] : null;
+    if ($dateday != $_SESSION['dateday']) {
+        $_SESSION['dateday'] = $dateday;
+        $_SESSION['infocush'] = null;
+        $_SESSION['infocusm'] = null;
+    }
+    $datehour = intval(date("H"));
+    $dateminute = intval(date("i"));
+    $datesecond = intval(date("s"));
     $step = -1;
-    
+    $_SESSION['infocush'] = isset($_SESSION['infocush']) ? $_SESSION['infocush'] : null;
+    $_SESSION['infocusm'] = isset($_SESSION['infocusm']) ? $_SESSION['infocusm'] : null;
     function donamestep($h, $m) {
         global $step;
+        global $_SESSION;
+        global $infocush;
+        global $infocusm;
         global $datehour;
         global $dateminute;
-        if ($step % 2 == 0) {
+        if ($h == $datehour && $m == $dateminute) {
+            $_SESSION['infocush'] = $h;
+            $_SESSION['infocusm'] = $m;
+        }
+        if ($h == $_SESSION['infocush'] && $m == $_SESSION['infocusm']) {
+            return "objektfocus2";
+        } elseif ($step % 2 == 0) {
             return "objekteven2";
         } else {
             return "objektodd2";
         }
     }
+    function isfocus($h, $m) {
+        if(donamestep($h, $m) == "objektfocus2") { return "Aktiv nu"; } 
+    }
     ?>
-    <div class="higherbar">
-        <form method="POST" action="index.php">
-            <input type="date" name="date" value="<?=date("Y-m-d", strtotime($selectedDate))?>">
-            <input type="submit" value="visa">
-            <a href="admin.php" class="viewlink">Admin</a>
-            <a href="sida2.php" class="viewlink">schemavisare</a>
-        </form>
-    </div>
     <div class="topbar">
-        <h1><?php echo $dateday; ?></h1>
+        <h1><?php echo $dateday . ' ' . sprintf('%02d:%02d:%02d', $datehour, $dateminute, $datesecond); ?></h1>
         
         <?php
-        $sql = "SELECT * FROM `dagstema` WHERE `begin` = '$selectedDate'";
+        $sql = "SELECT * FROM `dagstema` WHERE `begin` = CURDATE()";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
@@ -75,7 +80,7 @@ if (isset($_POST['date'])) {
     while($row = mysqli_fetch_assoc($result)) {
         $begin = new DateTime($row['begin']);
         $timedate = $begin->format('Y-m-d');
-        if ($timedate != date("Y-m-d", strtotime($selectedDate))) {
+        if ($timedate != date("Y-m-d")) {
             continue;
         }
         $timehour = intval($begin->format('H'));
@@ -101,3 +106,15 @@ if (isset($_POST['date'])) {
         <?php } ?>
 </body>
 </html>
+<script>
+    addEventListener("keydown", function(event) {
+        if (event.key === ".") {
+            window.location.href = "admin.php";
+        }
+    });
+    addEventListener("keydown", function(event) {
+        if (event.key === ",") {
+            window.location.href = "sida2.php";
+        }
+    });
+</script>

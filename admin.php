@@ -127,7 +127,7 @@ if (isset($_POST['delete_theme'])) {
     <form action="index.php" method="post">
         <input type="submit" value="tillbaka till Schemat">
     </form>
-    <form action="index.php" method="post">
+    <form action="sida2.php" method="post">
         <input type="submit" value="till datumsschemavisare">
     </form>
     <form action="<?php echo $ownlink; ?>" method="post">

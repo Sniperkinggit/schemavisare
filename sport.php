@@ -38,7 +38,7 @@ $_SESSION['admin'] = false; ?>
         </form>
     </div>
     <div class="topbar">
-        <h1>       </h1>
+        <h1>Sport</h1>
         
         <?php
         $sql = "SELECT * FROM `dagstema` WHERE `begin` = '$selectedDate'";

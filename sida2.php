@@ -3,6 +3,7 @@
 $_SESSION['admin'] = false;
 if (isset($_POST['date'])) {
     $selectedDate = $_POST['date'];
+    if (isset $_POST)
 } else {
     $selectedDate = date("Y-m-d");
 }
@@ -53,8 +54,8 @@ if (isset($_POST['date'])) {
     <div class="higherbar">
         <form method="POST" action="sida2.php">
             <input type="date" name="date" value="<?=date("Y-m-d", strtotime($selectedDate))?>">
+            <input type="checkbox" name="sportchema" value="1">
             <input type="submit" value="visa">
-            <input type="submit" value="visa sportchema">
             <a href="admin.php" class="viewlink">Admin</a>
             <a href="index.php" class="viewlink">schemavisare</a>
         </form>

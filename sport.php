@@ -26,17 +26,6 @@ $_SESSION['admin'] = false; ?>
         }
     }
     ?>
-    <div class="higherbar">
-        <form method="POST" action="sida2.php">
-            <input type="date" name="date" value="<?=date("Y-m-d")?>">
-            <label for="sportchema">Sportchema:</label>
-            <input type="checkbox" name="sportchema" value="1" <?php if($sport==1) echo "checked"; ?>>
-            <input type="submit" value="visa">
-            <a href="admin.php" class="viewlink">Admin</a>
-            <a href="index.php" class="viewlink">schemavisare</a>
-            <a href="sport.php" class="viewlink">Sport</a>
-        </form>
-    </div>
     <div class="topbar">
         <h1>Sport</h1>
         

@@ -74,9 +74,9 @@ if (isset($_POST['edit_id'])) {
     </form>
     <?php
     if (isset($_POST['name']) && isset($_POST['begin']) && isset($_POST['edit_id'])) {
-        $name = mysqli_real_escape_string($conn, $_POST['name']);
+        $name = mysqli_real_escape_string($conn, htmlspecialchars($_POST['name']));
         $begin = mysqli_real_escape_string($conn, $_POST['begin']);
-        $info = mysqli_real_escape_string($conn, $_POST['info']);
+        $info = mysqli_real_escape_string($conn, htmlspecialchars($_POST['info']));
         $edit_id = mysqli_real_escape_string($conn, $_POST['edit_id']);
         $sql = "UPDATE activiteter SET name='$name', begin='$begin', info='$info' WHERE id='$edit_id'";
         mysqli_query($conn, $sql);
@@ -85,7 +85,7 @@ if (isset($_POST['edit_id'])) {
     }
 }
 if (isset($_POST['daytheme']) && isset($_POST['daytheme_date'])) {
-    $daytheme = mysqli_real_escape_string($conn, $_POST['daytheme']);
+    $daytheme = mysqli_real_escape_string($conn, htmlspecialchars($_POST['daytheme']));
     $daytheme_date = mysqli_real_escape_string($conn, $_POST['daytheme_date']);
     $sql = "INSERT INTO dagstema (begin, tema) VALUES ('$daytheme_date', '$daytheme')";
     mysqli_query($conn, $sql);
@@ -141,9 +141,9 @@ if (isset($_POST['delete_theme'])) {
     </form>
     <?php
     if (isset($_POST['name']) && isset($_POST['begin'])) {
-        $name = mysqli_real_escape_string($conn, $_POST['name']);
+        $name = mysqli_real_escape_string($conn, htmlspecialchars($_POST['name']));
         $begin = mysqli_real_escape_string($conn, $_POST['begin']);
-        $info = mysqli_real_escape_string($conn, $_POST['info']);
+        $info = mysqli_real_escape_string($conn, htmlspecialchars($_POST['info']));
         $sql = "INSERT INTO activiteter (name, begin, info) VALUES ('$name', '$begin', '$info')";
         mysqli_query($conn, $sql);
         header("Location:" . $ownlink);

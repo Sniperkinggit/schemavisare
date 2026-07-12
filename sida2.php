@@ -3,9 +3,14 @@
 $_SESSION['admin'] = false;
 if (isset($_POST['date'])) {
     $selectedDate = $_POST['date'];
-    if (isset $_POST)
+    if (isset $_POST["sportchema"]) {
+        $sport=true;
+    } else {
+        $sport=false;
+    }
 } else {
     $selectedDate = date("Y-m-d");
+    $sport=false;
 }
 ?>
 <html lang="en">

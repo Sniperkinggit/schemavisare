@@ -143,8 +143,10 @@ if (isset($_POST['delete_theme'])) {
     <form action="admin.php" method="post">
         <input type="submit" name="ojsort" value="Sortera ej efter datum">
     </form>
+    
+    <?php } ?>
     <div class="line"></div>
-    <?php }
+    <?php
     if (isset($_POST['name']) && isset($_POST['begin'])) {
         $name = mysqli_real_escape_string($conn, $_POST['name']);
         $begin = mysqli_real_escape_string($conn, $_POST['begin']);

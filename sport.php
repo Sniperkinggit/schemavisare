@@ -41,7 +41,8 @@ $_SESSION['admin'] = false; ?>
         <h1>Sport</h1>
         
         <?php
-        $sql = "SELECT * FROM `dagstema` WHERE `begin` = 'date("Y-m-d")'";
+        $date = date("Y-m-d");
+        $sql = "SELECT * FROM `dagstema` WHERE `begin` = '$date'";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);

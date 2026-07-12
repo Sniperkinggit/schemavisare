@@ -133,8 +133,16 @@ if (isset($_POST['delete_theme'])) {
     <form action="sport.php" method="post">
         <input type="submit" value="till sportsschemavisare">
     </form>
-    
-    <?php
+    <?php if ($issort == false){ ?>
+    <form action="admin.php" method="post">
+        <input type="date" name="sort_date" required>
+        <input type="submit" name="sort" value="Sortera efter datum">
+    </form>
+    <?php }else{ ?>
+    <form action="admin.php" method="post">
+        <input type="submit" name="ojsort" value="Sortera ej efter datum">
+    </form>
+    <?php }
     if (isset($_POST['name']) && isset($_POST['begin'])) {
         $name = mysqli_real_escape_string($conn, $_POST['name']);
         $begin = mysqli_real_escape_string($conn, $_POST['begin']);
@@ -154,16 +162,6 @@ if (isset($_POST['delete_theme'])) {
         exit();
     }
     ?>
-    <?php if ($issort == false){ ?>
-    <form action="admin.php" method="post">
-        <input type="date" name="sort_date" required>
-        <input type="submit" name="sort" value="Sortera efter datum">
-    </form>
-    <?php }else{ ?>
-    <form action="admin.php" method="post">
-        <input type="submit" name="ojsort" value="Sortera ej efter datum">
-    </form>
-    <?php } ?>
     <h2>Dagstema</h2>
     <div class="line"></div>
     <form action="admin.php" method="post">
@@ -214,8 +212,7 @@ if (isset($_POST['delete_theme'])) {
         <input type="submit" name="shift" value="Förskjut framåt">
         <input type="submit" name="shift_back" value="Förskjut bakåt">
     </form>
-    
-    <?php }
+    <?php
     echo "<div class='line'></div>";
     if ($issort == true) {
         $sql = "SELECT * FROM activiteter WHERE DATE(begin) = '$sort_date' ORDER BY begin ASC";

@@ -175,7 +175,11 @@ if (isset($_POST['delete_theme'])) {
     </form>
         <div class="dropdown-content">
             <?php
-            $sql = "SELECT * FROM dagstema ORDER BY begin DESC";
+            if ($issort == true) {
+                $sql = "SELECT * FROM dagstema WHERE begin = '$sort_date' ORDER BY begin DESC";
+            } else {
+                $sql = "SELECT * FROM dagstema ORDER BY begin DESC";
+            }
             $result = mysqli_query($conn, $sql);
             while($row = mysqli_fetch_assoc($result)) { ?>
                 <p> <?php echo $row['begin'] ?> -  <?php echo $row['tema'] ?> </p>

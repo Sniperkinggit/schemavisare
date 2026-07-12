@@ -49,7 +49,7 @@ $_SESSION['admin'] = false; ?>
         } ?> 
     </div>
     <?php
-    $sql = "SELECT * FROM `activiteter` ORDER BY `begin` ASC";
+    $sql = "SELECT * FROM `sport` ORDER BY `begin` ASC";
     $result = mysqli_query($conn, $sql);
     while($row = mysqli_fetch_assoc($result)) {
         $begin = new DateTime($row['begin']);

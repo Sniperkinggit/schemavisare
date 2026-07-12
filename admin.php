@@ -163,6 +163,7 @@ if (isset($_POST['delete_theme'])) {
     <form action="admin.php" method="post">
         <input type="submit" name="ojsort" value="Sortera ej efter datum">
     </form>
+    <?php } ?>
     <h2>Dagstema</h2>
     <div class="line"></div>
     <form action="admin.php" method="post">

@@ -4,13 +4,13 @@ $_SESSION['admin'] = false;
 if (isset($_POST['date'])) {
     $selectedDate = $_POST['date'];
     if (isset($_POST["sportchema"])) {
-        $sport=true;
+        $sport=1;
     } else {
-        $sport=false;
+        $sport=0;
     }
 } else {
     $selectedDate = date("Y-m-d");
-    $sport=false;
+    $sport=0;
 }
 ?>
 <html lang="en">
@@ -60,7 +60,7 @@ if (isset($_POST['date'])) {
         <form method="POST" action="sida2.php">
             <input type="date" name="date" value="<?=date("Y-m-d", strtotime($selectedDate))?>">
             <label for="sportchema">Sportchema:</label>
-            <input type="checkbox" name="sportchema" value="<?php echo $sport ? '1' : '0'; ?>">
+            <input type="checkbox" name="sportchema" value="1" <?php if($sport==1) echo "checked"; ?>>
             <input type="submit" value="visa">
             <a href="admin.php" class="viewlink">Admin</a>
             <a href="index.php" class="viewlink">schemavisare</a>

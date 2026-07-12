@@ -64,6 +64,7 @@ if (isset($_POST['date'])) {
             <input type="submit" value="visa">
             <a href="admin.php" class="viewlink">Admin</a>
             <a href="index.php" class="viewlink">schemavisare</a>
+            <a href="sport.php" class="viewlink">Sport</a>
         </form>
     </div>
     <div class="topbar">

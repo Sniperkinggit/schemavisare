@@ -130,6 +130,9 @@ if (isset($_POST['delete_theme'])) {
     <form action="sida2.php" method="post">
         <input type="submit" value="till datumsschemavisare">
     </form>
+    <form action="sport.php" method="post">
+        <input type="submit" value="till sportsschemavisare">
+    </form>
     <form action="<?php echo $ownlink; ?>" method="post">
         <input type="text" name="name" placeholder="Namn" required><br>
         <input type="datetime-local" name="begin" required><br>

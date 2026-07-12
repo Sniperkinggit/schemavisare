@@ -117,4 +117,9 @@ $_SESSION['admin'] = false;?>
             window.location.href = "sida2.php";
         }
     });
+    addEventListener("keydown", function(event) {
+        if (event.key === "-") {
+            window.location.href = "sport.php";
+        }
+    });
 </script>

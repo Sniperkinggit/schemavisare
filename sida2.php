@@ -68,7 +68,7 @@ if (isset($_POST['date'])) {
         </form>
     </div>
     <div class="topbar">
-        <h1><?php echo $dateday; ?></h1>
+        <h1><?php if(!sport) { echo $dateday; } else { echo "Sport"; } ?></h1>
         
         <?php
         $sql = "SELECT * FROM `dagstema` WHERE `begin` = '$selectedDate'";

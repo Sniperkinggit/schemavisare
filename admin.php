@@ -133,6 +133,7 @@ if (isset($_POST['delete_theme'])) {
     <form action="sport.php" method="post">
         <input type="submit" value="till sportsschemavisare">
     </form>
+    <div class="line"></div>
     <?php if ($issort == false){ ?>
     <form action="admin.php" method="post">
         <input type="date" name="sort_date" required>
@@ -142,6 +143,7 @@ if (isset($_POST['delete_theme'])) {
     <form action="admin.php" method="post">
         <input type="submit" name="ojsort" value="Sortera ej efter datum">
     </form>
+    <div class="line"></div>
     <?php }
     if (isset($_POST['name']) && isset($_POST['begin'])) {
         $name = mysqli_real_escape_string($conn, $_POST['name']);

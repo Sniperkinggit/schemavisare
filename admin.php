@@ -166,6 +166,7 @@ if (isset($_POST['delete_theme'])) {
         </div>
     <div class="line"></div>
     <h2>Aktiviteter <?php if (isset($sort_date)) { echo " Sorterade efter " . $sort_date; } ?></h2>
+    <div class="line"></div>
     <h3>Lägg till aktivitet</h3>
     <form action="<?php echo $ownlink; ?>" method="post">
         <input type="text" name="name" placeholder="Namn" required><br>

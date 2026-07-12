@@ -154,6 +154,15 @@ if (isset($_POST['delete_theme'])) {
         exit();
     }
     ?>
+    <?php if ($issort == false){ ?>
+    <form action="admin.php" method="post">
+        <input type="date" name="sort_date" required>
+        <input type="submit" name="sort" value="Sortera efter datum">
+    </form>
+    <?php }else{ ?>
+    <form action="admin.php" method="post">
+        <input type="submit" name="ojsort" value="Sortera ej efter datum">
+    </form>
     <h2>Dagstema</h2>
     <div class="line"></div>
     <form action="admin.php" method="post">
@@ -204,15 +213,7 @@ if (isset($_POST['delete_theme'])) {
         <input type="submit" name="shift" value="Förskjut framåt">
         <input type="submit" name="shift_back" value="Förskjut bakåt">
     </form>
-    <?php if ($issort == false){ ?>
-    <form action="admin.php" method="post">
-        <input type="date" name="sort_date" required>
-        <input type="submit" name="sort" value="Sortera efter datum">
-    </form>
-    <?php }else{ ?>
-    <form action="admin.php" method="post">
-        <input type="submit" name="ojsort" value="Sortera ej efter datum">
-    </form>
+    
     <?php }
     echo "<div class='line'></div>";
     if ($issort == true) {

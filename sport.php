@@ -28,15 +28,6 @@ $_SESSION['admin'] = false; ?>
     ?>
     <div class="topbar">
         <h1>Sport</h1>
-        
-        <?php
-        $date = date("Y-m-d");
-        $sql = "SELECT * FROM `dagstema` WHERE `begin` = '$date'";
-        $result = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($result) > 0) {
-            $row = mysqli_fetch_assoc($result);
-            echo "<h1>" . $row['tema'] . "</h1>";
-        } ?> 
     </div>
     <?php
     $sql = "SELECT * FROM `sport` ORDER BY `begin` ASC";

@@ -165,6 +165,8 @@ if (isset($_POST['delete_theme'])) {
             } ?>
         </div>
     <div class="line"></div>
+    <h2>Sport</h2>
+    <div class="line"></div>
     <h2>Aktiviteter <?php if (isset($sort_date)) { echo " Sorterade efter " . $sort_date; } ?></h2>
     <div class="line"></div>
     <h3>Lägg till aktivitet</h3>

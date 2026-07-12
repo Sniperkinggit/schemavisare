@@ -143,7 +143,17 @@ if (isset($_POST['delete_theme'])) {
         mysqli_query($conn, $sql);
         header("Location:" . $ownlink);
         exit();
-    }?>
+    }
+    if (isset($_POST['sport_name']) && isset($_POST['sport_begin'])) {
+        $sport_name = mysqli_real_escape_string($conn, $_POST['sport_name']);
+        $sport_begin = mysqli_real_escape_string($conn, $_POST['sport_begin']);
+        $sport_info = mysqli_real_escape_string($conn, $_POST['sport_info']);
+        $sql = "INSERT INTO sport (name, begin, info) VALUES ('$sport_name', '$sport_begin', '$sport_info')";
+        mysqli_query($conn, $sql);
+        header("Location:" . $ownlink);
+        exit();
+    }
+    ?>
     <h2>Dagstema</h2>
     <div class="line"></div>
     <form action="admin.php" method="post">
@@ -166,6 +176,14 @@ if (isset($_POST['delete_theme'])) {
         </div>
     <div class="line"></div>
     <h2>Sport</h2>
+    <div class="line"></div>
+    <h3>Lägg till sportaktivitet och info</h3>
+    <form action="<?php echo $ownlink; ?>" method="post">
+        <input type="text" name="sport_name" placeholder="Namn" required><br>
+        <input type="date-local" name="sport_begin" required><br>
+        <input type="text" name="sport_info" placeholder="Info"><br>
+        <input type="submit" value="Lägg till">
+    </form>
     <div class="line"></div>
     <h2>Aktiviteter <?php if (isset($sort_date)) { echo " Sorterade efter " . $sort_date; } ?></h2>
     <div class="line"></div>

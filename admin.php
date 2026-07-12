@@ -200,7 +200,20 @@ if (isset($_POST['delete_theme'])) {
         <input type="text" name="sport_info" placeholder="Info"><br>
         <input type="submit" value="Lägg till">
     </form>
-    <div class="line"></div>
+    <?php
+    echo "<div class='line'></div>";
+    if ($issort == true) {
+        $sql = "SELECT * FROM sport WHERE DATE(begin) = '$sort_date' ORDER BY begin ASC";
+    } else {
+    $sql = "SELECT * FROM sport ORDER BY begin ASC";
+    }
+    $result = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_assoc($result)) {
+        echo "<p>" . $row['name'] . " - " . $row['begin'] . " - " . $row['info'] . "</p>";
+        echo "<form action=" . $ownlink . " method='post'><input type='hidden' name='delete_id' value='" . $row['id'] . "'><input type='submit' value='Ta bort'></form>";
+        echo "<form action=" . $ownlink . " method='post'><input type='hidden' name='edit_id' value='" . $row['id'] . "'><input type='submit' value='Redigera'></form>";
+        echo "<div class='line'></div>";
+    }?>
     <h2>Aktiviteter <?php if (isset($sort_date)) { echo " Sorterade efter " . $sort_date; } ?></h2>
     <div class="line"></div>
     <h3>Lägg till aktivitet</h3>

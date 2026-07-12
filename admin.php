@@ -180,7 +180,7 @@ if (isset($_POST['delete_theme'])) {
     <h3>Lägg till sportaktivitet och info</h3>
     <form action="<?php echo $ownlink; ?>" method="post">
         <input type="text" name="sport_name" placeholder="Namn" required><br>
-        <input type="date-local" name="sport_begin" required><br>
+        <input type="date" name="sport_begin" required><br>
         <input type="text" name="sport_info" placeholder="Info"><br>
         <input type="submit" value="Lägg till">
     </form>

@@ -59,7 +59,7 @@ if (isset($_POST['date'])) {
     <div class="higherbar">
         <form method="POST" action="sida2.php">
             <input type="date" name="date" value="<?=date("Y-m-d", strtotime($selectedDate))?>">
-            <label for="sportchema">Sportchema</label>
+            <label for="sportchema">Sportchema:</label>
             <input type="checkbox" name="sportchema" value="1">
             <input type="submit" value="visa">
             <a href="admin.php" class="viewlink">Admin</a>

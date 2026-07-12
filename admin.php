@@ -141,9 +141,9 @@ if (isset($_POST['delete_theme'])) {
     </form>
     <?php
     if (isset($_POST['name']) && isset($_POST['begin'])) {
-        $name = mysqli_real_escape_string($conn, htmlspecialchars($_POST['name']));
+        $name = mysqli_real_escape_string($conn, $_POST['name']);
         $begin = mysqli_real_escape_string($conn, $_POST['begin']);
-        $info = mysqli_real_escape_string($conn, htmlspecialchars($_POST['info']));
+        $info = mysqli_real_escape_string($conn, $_POST['info']);
         $sql = "INSERT INTO activiteter (name, begin, info) VALUES ('$name', '$begin', '$info')";
         mysqli_query($conn, $sql);
         header("Location:" . $ownlink);

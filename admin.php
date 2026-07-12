@@ -116,7 +116,7 @@ if (isset($_POST['delete_theme'])) {
             <input type="password" name="password" placeholder="Lösenord" required><br>
             <input type="submit" value="Logga in">
         </form>
-        <form action="sida2.php" method="post">
+        <form action="index.php" method="post">
         <input type="submit" value="tillbaka till Schemat">
     </form>
     <?php }else{?>

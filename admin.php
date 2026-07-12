@@ -133,12 +133,7 @@ if (isset($_POST['delete_theme'])) {
     <form action="sport.php" method="post">
         <input type="submit" value="till sportsschemavisare">
     </form>
-    <form action="<?php echo $ownlink; ?>" method="post">
-        <input type="text" name="name" placeholder="Namn" required><br>
-        <input type="datetime-local" name="begin" required><br>
-        <input type="text" name="info" placeholder="Info"><br>
-        <input type="submit" value="Lägg till">
-    </form>
+    
     <?php
     if (isset($_POST['name']) && isset($_POST['begin'])) {
         $name = mysqli_real_escape_string($conn, $_POST['name']);
@@ -171,6 +166,13 @@ if (isset($_POST['delete_theme'])) {
         </div>
     <div class="line"></div>
     <h2>Aktiviteter <?php if (isset($sort_date)) { echo " Sorterade efter " . $sort_date; } ?></h2>
+    <h3>Lägg till aktivitet</h3>
+    <form action="<?php echo $ownlink; ?>" method="post">
+        <input type="text" name="name" placeholder="Namn" required><br>
+        <input type="datetime-local" name="begin" required><br>
+        <input type="text" name="info" placeholder="Info"><br>
+        <input type="submit" value="Lägg till">
+    </form>
     <form action="admin.php" method="post" class="shift-form">
         <h3>Förskjut aktiviteter</h3>
         <p>datum och tid:</p>

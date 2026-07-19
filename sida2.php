@@ -98,11 +98,19 @@ if (isset($_POST['date'])) {
     $step += 1; ?>
     <div class=<?php echo donamestep($timehour, $timemin); ?> >
         <h2 class="activity">
-            <div class="time"><?php echo $begin->format('H:i'); ?></div> 
+            <?php if ($sport == 0) { ?>
+                <div class="time"><?php echo $begin->format('H:i'); ?></div>
+            <?php } ?>
             <div class="nameninfo"> 
-                <div class="name">
-                    <?php echo $name; ?>
-                </div>
+                <?php if ($sport == 1) { ?>
+                    <div class="name">
+                        <?php echo $name; ?>
+                    </div>
+                <?php } else { ?>
+                    <h1>
+                        <?php echo $name; ?>
+                    </h1>
+                <?php } ?>
                 <?php if ($info) { ?>
                      <div class="info">
                         <?php echo $info; ?>

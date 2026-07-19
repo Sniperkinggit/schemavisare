@@ -197,7 +197,8 @@ if (isset($_POST['delete_theme'])) {
     <form action="<?php echo $ownlink; ?>" method="post">
         <input type="text" name="sport_name" placeholder="Namn" required><br>
         <input type="date" name="sport_begin" required><br>
-        <input type="text" name="sport_info" placeholder="Info"><br>
+        <input type="text" name="sport_info" placeholder="Info" class="form-txt"><br>
+        skriv &lt;br&gt; för att göra en radbrytning<br>
         <input type="submit" value="Lägg till">
     </form>
     <?php
@@ -220,7 +221,8 @@ if (isset($_POST['delete_theme'])) {
     <form action="<?php echo $ownlink; ?>" method="post">
         <input type="text" name="name" placeholder="Namn" required><br>
         <input type="datetime-local" name="begin" required><br>
-        <input type="text" name="info" placeholder="Info"><br>
+        <input type="text" name="info" placeholder="Info" class="form-txt"><br>
+        skriv &lt;br&gt; för att göra en radbrytning<br>
         <input type="submit" value="Lägg till">
     </form>
     <form action="admin.php" method="post" class="shift-form">

@@ -35,7 +35,7 @@ $_SESSION['admin'] = false; ?>
     while($row = mysqli_fetch_assoc($result)) {
         $begin = new DateTime($row['begin']);
         $timedate = $begin->format('Y-m-d');
-        if ($timedate != date("Y-m-d", strtotime($selectedDate))) {
+        if ($timedate != date("Y-m-d")) {
             continue;
         }
         $timehour = intval($begin->format('H'));
@@ -45,11 +45,10 @@ $_SESSION['admin'] = false; ?>
     $step += 1; ?>
     <div class=<?php echo donamestep($timehour, $timemin); ?> >
         <h2 class="activity">
-            <div class="time"><?php echo $begin->format('H:i'); ?></div> 
             <div class="nameninfo"> 
-                <div class="name">
+                <h1>
                     <?php echo $name; ?>
-                </div>
+                </h1>
                 <?php if ($info) { ?>
                      <div class="info">
                         <?php echo $info; ?>

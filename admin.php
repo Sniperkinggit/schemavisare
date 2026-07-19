@@ -84,6 +84,69 @@ if (isset($_POST['edit_id'])) {
         exit();
     }
 }
+if (isset($_POST['delete_sport_id'])) {
+    $delete_sport_id = mysqli_real_escape_string($conn, $_POST['delete_sport_id']);
+    $sql = "DELETE FROM sport WHERE id='$delete_sport_id'";
+    mysqli_query($conn, $sql);
+    header("Location: " . $ownlink);
+    exit();
+}
+if (isset($_POST['edit_sport_id'])) {
+    $edit_sport_id = mysqli_real_escape_string($conn, $_POST['edit_sport_id']);
+    $sql = "SELECT * FROM sport WHERE id='$edit_sport_id'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $sport_name = $row['name'];
+    $sport_begin = date("Y-m-d", strtotime($row['begin']));
+    $sport_info = $row['info'];
+    ?>
+    <h1>Redigera sportaktivitet</h1>
+    <form action="<?php echo $ownlink; ?>" method="post">
+        <input type="hidden" name="edit_sport_id" value="<?php echo $edit_sport_id; ?>">
+        <input type="text" name="sport_name" placeholder="Namn" value="<?php echo $sport_name; ?>" required><br>
+        <input type="date" name="sport_begin" value="<?php echo $sport_begin; ?>" required><br>
+        <input type="text" name="sport_info" placeholder="Info" value="<?php echo $sport_info; ?>"><br>
+        <input type="submit" value="Spara ändringar">
+    </form>
+    <?php
+    if (isset($_POST['sport_name']) && isset($_POST['sport_begin']) && isset($_POST['edit_sport_id'])) {
+        $sport_name = mysqli_real_escape_string($conn, $_POST['sport_name']);
+        $sport_begin = mysqli_real_escape_string($conn, $_POST['sport_begin']);
+        $sport_info = mysqli_real_escape_string($conn, $_POST['sport_info']);
+        $edit_sport_id = mysqli_real_escape_string($conn, $_POST['edit_sport_id']);
+        $sql = "UPDATE sport SET name='$sport_name', begin='$sport_begin', info='$sport_info' WHERE id='$edit_sport_id'";
+        mysqli_query($conn, $sql);
+        header("Location: " . $ownlink);
+        exit();
+    }
+}
+if (isset($_POST['edit_theme_id'])) {
+    $edit_theme_id = mysqli_real_escape_string($conn, $_POST['edit_theme_id']);
+    $sql = "SELECT * FROM dagstema WHERE id='$edit_theme_id'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $daytheme = $row['tema'];
+    $daytheme_date = date("Y-m-d", strtotime($row['begin']));
+    ?>
+    <h1>Redigera dagstema</h1>
+    <form action="<?php echo $ownlink; ?>" method="post">
+        <input type="hidden" name="edit_theme_id" value="<?php echo $edit_theme_id; ?>">
+        <input type="text" name="daytheme" placeholder="Dagstema" value="<?php echo $daytheme; ?>" required><br>
+        <input type="date" name="daytheme_date" value="<?php echo $daytheme_date; ?>" required><br>
+        <input type="submit" value="Spara ändringar">
+    </form>
+    <?php
+    if (isset($_POST['daytheme']) && isset($_POST['daytheme_date']) && isset($_POST['edit_theme_id'])) {
+        $daytheme = mysqli_real_escape_string($conn, $_POST['daytheme']);
+        $daytheme_date = mysqli_real_escape_string($conn, $_POST['daytheme_date']);
+        $edit_theme_id = mysqli_real_escape_string($conn, $_POST['edit_theme_id']);
+        $sql = "UPDATE dagstema SET tema='$daytheme', begin='$daytheme_date' WHERE id='$edit_theme_id'";
+        mysqli_query($conn, $sql);
+        header("Location: " . $ownlink);
+        exit();
+    }
+}
+
 if (isset($_POST['daytheme']) && isset($_POST['daytheme_date'])) {
     $daytheme = mysqli_real_escape_string($conn, $_POST['daytheme']);
     $daytheme_date = mysqli_real_escape_string($conn, $_POST['daytheme_date']);
@@ -187,6 +250,9 @@ if (isset($_POST['delete_theme'])) {
                     <input type="hidden" name="delete_theme_id" value="<?php echo $row['id'] ?>">
                     <input type="submit" name="delete_theme" value="Ta bort">
                 </form>
+                <form action="admin.php" method="post">
+                    <input type="hidden" name="edit_theme_id" value="<?php echo $row['id'] ?>">
+                    <input type="submit" name="edit_theme" value="Redigera">
             <?php
             } ?>
         </div>
@@ -211,8 +277,8 @@ if (isset($_POST['delete_theme'])) {
     $result = mysqli_query($conn, $sql);
     while($row = mysqli_fetch_assoc($result)) {
         echo "<p>" . $row['name'] . " - " . $row['begin'] . " - " . $row['info'] . "</p>";
-        echo "<form action=" . $ownlink . " method='post'><input type='hidden' name='delete_id' value='" . $row['id'] . "'><input type='submit' value='Ta bort'></form>";
-        echo "<form action=" . $ownlink . " method='post'><input type='hidden' name='edit_id' value='" . $row['id'] . "'><input type='submit' value='Redigera'></form>";
+        echo "<form action=" . $ownlink . " method='post'><input type='hidden' name='delete_sport_id' value='" . $row['id'] . "'><input type='submit' value='Ta bort'></form>";
+        echo "<form action=" . $ownlink . " method='post'><input type='hidden' name='edit_sport_id' value='" . $row['id'] . "'><input type='submit' value='Redigera'></form>";
         echo "<div class='line'></div>";
     }?>
     <h2>Aktiviteter <?php if (isset($sort_date)) { echo " Sorterade efter " . $sort_date; } ?></h2>

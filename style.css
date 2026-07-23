@@ -4,16 +4,18 @@
     margin: 0%;
 }
 body{
-    background-color: oklch(0% 0 0);
-    color:oklch(88.282% 0.18104 94.468);
+    background-color: oklch(100% 0.00011 271.152);
+    color:oklch(0% 0 0);
     font-family: sans-serif;
+    padding: 25px;
 }
 .topbar{
+    color: oklch(100% 0.00011 271.152);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100px;
-    background-color: oklch(44.96% 0.20169 261.585 / 0.595);
+    background-color: oklch(0% 0 0);
     border-radius:0 0 10px 10px;
     flex-direction: column;
 }
@@ -25,11 +27,12 @@ body{
     padding-left: 20px;
 }
 .objektodd2{
+    color: oklch(100% 0.00011 271.152);
     width:100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: oklch(44.96% 0.20169 261.585 / 0.595);
+    background-color: oklch(0% 0 0);
     padding-left: 20px;
     border-radius: 10px;
     
@@ -39,7 +42,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: oklch(86.668% 0.29289 142.716 / 0.595);
+    background-color: oklch(85.389% 0.28802 142.741 / 0.595);
     padding-left: 20px;
     border-radius: 10px;
     
@@ -58,13 +61,13 @@ body{
 .line{
     height: 1px;
     width: 100%;
-    background-color: oklch(88.282% 0.18104 94.468);
+    background-color: oklch(0% 0 0);
 }
 .shift-form{
-    border-top: 1px solid oklch(88.282% 0.18104 94.468);
+    border-top: 1px solid oklch(0% 0 0);
     padding-top: 10px;
     padding-bottom: 10px;
-    border-bottom: 1px solid oklch(88.282% 0.18104 94.468);
+    border-bottom: 1px solid oklch(0% 0 0);
     margin-bottom: 10px;
 }
 .time{
@@ -84,4 +87,10 @@ body{
 }
 .form-txt{
     width: 700px;
+}
+.clrs{
+    color: oklch(88.282% 0.18104 94.468);
+    color: oklch(86.668% 0.29289 142.716 / 0.595);
+    color: oklch(44.96% 0.20169 261.585 / 0.595);
+    color: oklch(0% 0 0);
 }

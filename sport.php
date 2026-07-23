@@ -5,11 +5,28 @@ $_SESSION['admin'] = false; ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="1">
     <title>Schemavisare<?=date("Y")?></title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <?php    
+    <?php
+    $weekday = date("l");
+    if ($weekday == "Monday") {
+        $dateday = "Måndag";
+    } elseif ($weekday == "Tuesday") {
+        $dateday = "Tisdag";
+    } elseif ($weekday == "Wednesday") {
+        $dateday = "Onsdag";
+    } elseif ($weekday == "Thursday") {
+        $dateday = "Torsdag";
+    } elseif ($weekday == "Friday") {
+        $dateday = "Fredag";
+    } elseif ($weekday == "Saturday") {
+        $dateday = "Lördag";
+    } elseif ($weekday == "Sunday") {
+        $dateday = "Söndag";
+    }    
     $datehour = intval(date("H"));
     $dateminute = intval(date("i"));
     $datesecond = intval(date("s"));
@@ -27,7 +44,7 @@ $_SESSION['admin'] = false; ?>
     }
     ?>
     <div class="topbar">
-        <h1>Sport</h1>
+        <h1><?php echo "sport " . sprintf('%02d:%02d:%02d', $datehour, $dateminute, $datesecond)?></h1>
     </div>
     <?php
     $sql = "SELECT * FROM `sport` ORDER BY `begin` ASC";

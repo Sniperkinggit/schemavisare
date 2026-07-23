@@ -253,6 +253,7 @@ if (isset($_POST['delete_theme'])) {
                 <form action="admin.php" method="post">
                     <input type="hidden" name="edit_theme_id" value="<?php echo $row['id'] ?>">
                     <input type="submit" name="edit_theme" value="Redigera">
+                </form>
             <?php
             } ?>
         </div>

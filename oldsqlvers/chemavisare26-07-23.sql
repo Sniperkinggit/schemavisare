@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Värd: 127.0.0.1
--- Tid vid skapande: 23 jul 2026 kl 16:03
+-- Tid vid skapande: 22 jul 2026 kl 09:29
 -- Serverversion: 10.4.32-MariaDB
 -- PHP-version: 8.2.12
 
@@ -53,7 +53,7 @@ INSERT INTO `activiteter` (`id`, `name`, `begin`, `info`) VALUES
 (62, 'Väckning', '2026-07-22 08:15:00', ''),
 (63, 'Morgonbön', '2026-07-22 08:45:00', ''),
 (64, 'Frukost', '2026-07-22 09:00:00', ''),
-(65, 'Ankomst Lilla byn', '2026-07-22 10:00:00', 'Fika för lilla byn'),
+(65, 'Ankomst Lilla byn', '2026-07-22 10:00:00', ''),
 (66, 'Bytid', '2026-07-22 11:00:00', 'Lägret byggs upp, samling i byarna'),
 (67, 'Bibelstudium', '2026-07-22 12:00:00', ''),
 (68, 'Lunch', '2026-07-22 13:00:00', 'Korv och mos'),
@@ -101,7 +101,7 @@ INSERT INTO `activiteter` (`id`, `name`, `begin`, `info`) VALUES
 (110, 'Hemfärd', '2026-07-25 10:00:00', ''),
 (130, 'ledarmöte', '2026-07-20 19:00:00', 'övervåningen'),
 (131, 'kvällsmat', '2026-07-20 18:30:00', 'oboj och macka'),
-(132, 'Stora byn samlas i stora tältet', '2026-07-22 10:05:00', '');
+(132, 'Stora byn samlas i tältet', '2026-07-22 10:05:00', '');
 
 -- --------------------------------------------------------
 
@@ -138,18 +138,6 @@ CREATE TABLE `sport` (
   `begin` date NOT NULL DEFAULT current_timestamp(),
   `info` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumpning av Data i tabell `sport`
---
-
-INSERT INTO `sport` (`id`, `name`, `begin`, `info`) VALUES
-(11, 'Fotboll', '2026-07-22', '17:30 Kungarna - Drottningarna <br> 17:50 Prinsarna - Princessorna <br> 18:10 Prinsarna - Kungarna'),
-(12, 'Bandy', '2026-07-22', '17:30 Prinsarna - Prinsessorna <br> 17:50 Kungarna - Drottningarna <br> 18:10 Drottningarna - Princessorna'),
-(13, 'Dragkamp', '2026-07-22', '17:40 Prinsarna - Princessorna <br> 18:00 Kungarna - Drottningarna <br> 18:20 Drottningarna - Princessorna'),
-(14, 'Fotboll', '2026-07-23', '16:00 Kungarna - Princessorna <br> 16:20 Prinsarna - Drottningarna <br> 16:40 Prinsarna - Princessorna <br> 17:00 Kungarna - Drottningarna <br> 17:20 Drottningarna - Princessorna'),
-(15, 'Bandy', '2026-07-23', '16:00 Prinsarna - Drottningarna <br> 16:20 Kungarna - Princessorna <br> 16:40 Kungarna - Drottningarna <br> 17:20 Drottningarna - Princessorna'),
-(16, 'Dragkamp', '2026-07-23', '16:10 Prinsarna - Drottningarna <br> 16:30 Kungarna - Princessorna <br> 16:50 Kungarna - Drottningarna <br> 17:30 Drottningarna - Princessorna');
 
 --
 -- Index för dumpade tabeller
@@ -193,7 +181,7 @@ ALTER TABLE `dagstema`
 -- AUTO_INCREMENT för tabell `sport`
 --
 ALTER TABLE `sport`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

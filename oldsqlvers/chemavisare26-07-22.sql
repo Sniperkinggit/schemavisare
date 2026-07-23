@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Värd: 127.0.0.1
--- Tid vid skapande: 23 jul 2026 kl 16:03
--- Serverversion: 10.4.32-MariaDB
--- PHP-version: 8.2.12
+-- Host: 127.0.0.1
+-- Generation Time: Jul 12, 2026 at 04:53 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Databas: `chemavisare`
+-- Database: `chemavisare`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `activiteter`
+-- Table structure for table `activiteter`
 --
 
 CREATE TABLE `activiteter` (
@@ -35,24 +35,24 @@ CREATE TABLE `activiteter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumpning av Data i tabell `activiteter`
+-- Dumping data for table `activiteter`
 --
 
 INSERT INTO `activiteter` (`id`, `name`, `begin`, `info`) VALUES
 (51, 'Ankomst, Lunch,  uppackning', '2026-07-21 13:00:00', 'kebabgryta med ris'),
 (52, 'Lära känna varandra', '2026-07-21 14:00:00', 'intro till lägret, flagghissning.'),
-(53, 'Bibelstudium', '2026-07-21 15:10:00', ''),
-(54, 'Fika', '2026-07-21 16:00:00', 'Bullar och Frukt'),
+(53, 'Bibelstudium', '2026-07-21 15:00:00', ''),
+(54, 'Fika', '2026-07-21 16:00:00', ''),
 (55, 'Volleyboll', '2026-07-21 16:30:00', ''),
 (56, 'Bad', '2026-07-21 17:30:00', ''),
 (57, 'Gruppledarsamling', '2026-07-21 18:30:00', ''),
 (58, 'Kvällsmat', '2026-07-21 19:00:00', 'Grilla korv'),
-(59, 'Kvällskul', '2026-07-21 20:00:00', 'Janne och Rebecka'),
+(59, 'Kvällskul', '2026-07-21 20:00:00', 'Janne och Andreas.L'),
 (60, 'Lägerbål', '2026-07-21 21:30:00', ''),
 (61, 'Tystnad', '2026-07-21 23:00:00', ''),
 (62, 'Väckning', '2026-07-22 08:15:00', ''),
 (63, 'Morgonbön', '2026-07-22 08:45:00', ''),
-(64, 'Frukost', '2026-07-22 09:00:00', ''),
+(64, 'Flagghissning', '2026-07-22 09:00:00', 'Frukost'),
 (65, 'Ankomst Lilla byn', '2026-07-22 10:00:00', 'Fika för lilla byn'),
 (66, 'Bytid', '2026-07-22 11:00:00', 'Lägret byggs upp, samling i byarna'),
 (67, 'Bibelstudium', '2026-07-22 12:00:00', ''),
@@ -61,7 +61,7 @@ INSERT INTO `activiteter` (`id`, `name`, `begin`, `info`) VALUES
 (70, 'Smörgåsbord', '2026-07-22 15:45:00', ''),
 (71, 'Mellanmål', '2026-07-22 17:15:00', ''),
 (72, 'Idrott', '2026-07-22 17:30:00', ''),
-(73, 'Bad', '2026-07-22 18:30:00', 'Badvakt: Knut, Sandra, Bengt'),
+(73, 'Bad', '2026-07-22 18:30:00', 'Badvakt: Knut, Sandra, Andreas.L'),
 (74, 'Kvällsmat', '2026-07-22 19:15:00', 'Hamburgare'),
 (75, 'Kvällskul', '2026-07-22 20:00:00', 'Flickornas afton och femkampsgren 2'),
 (76, 'Lägerbål', '2026-07-22 21:30:00', ''),
@@ -91,22 +91,19 @@ INSERT INTO `activiteter` (`id`, `name`, `begin`, `info`) VALUES
 (100, 'Fotboll', '2026-07-24 17:00:00', 'Ledare-Lägeriter'),
 (101, 'Bad', '2026-07-24 17:45:00', 'Badvakter: Ingmar, Johannes, Bea'),
 (102, 'Kvällsmat', '2026-07-24 19:00:00', 'Tacos'),
-(103, 'Ringlekar och femkampsgren 5', '2026-07-24 21:00:00', ''),
-(104, 'Varité i storatältet', '2026-07-24 20:00:00', ''),
+(103, 'Ringlekar och femkampsgren 5', '2026-07-24 20:00:00', ''),
+(104, 'Varité i storatältet', '2026-07-24 21:00:00', ''),
 (105, 'Lägerbål', '2026-07-24 22:30:00', ''),
 (106, 'Tystnad', '2026-07-24 23:30:00', ''),
 (107, 'Väckning', '2026-07-25 08:30:00', ''),
 (108, 'Morgonbön', '2026-07-25 09:00:00', ''),
 (109, 'Frukost', '2026-07-25 09:15:00', 'Packning, tältslagning'),
-(110, 'Hemfärd', '2026-07-25 10:00:00', ''),
-(130, 'ledarmöte', '2026-07-20 19:00:00', 'övervåningen'),
-(131, 'kvällsmat', '2026-07-20 18:30:00', 'oboj och macka'),
-(132, 'Stora byn samlas i stora tältet', '2026-07-22 10:05:00', '');
+(110, 'Hemfärd', '2026-07-25 10:00:00', '');
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `dagstema`
+-- Table structure for table `dagstema`
 --
 
 CREATE TABLE `dagstema` (
@@ -116,20 +113,20 @@ CREATE TABLE `dagstema` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumpning av Data i tabell `dagstema`
+-- Dumping data for table `dagstema`
 --
 
 INSERT INTO `dagstema` (`id`, `tema`, `begin`) VALUES
-(10, 'Kungen och hans fiender', '2026-07-21'),
+(10, 'Kungen och hans vänner', '2026-07-21'),
 (11, 'Kungen och hans far', '2026-07-22'),
 (12, 'Kungen och hans lärjungar', '2026-07-23'),
-(13, 'Kungen och hans vänner', '2026-07-24'),
+(13, 'Kungen och hans barn', '2026-07-24'),
 (14, 'Min kung och jag', '2026-07-25');
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `sport`
+-- Table structure for table `sport`
 --
 
 CREATE TABLE `sport` (
@@ -140,60 +137,48 @@ CREATE TABLE `sport` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumpning av Data i tabell `sport`
---
-
-INSERT INTO `sport` (`id`, `name`, `begin`, `info`) VALUES
-(11, 'Fotboll', '2026-07-22', '17:30 Kungarna - Drottningarna <br> 17:50 Prinsarna - Princessorna <br> 18:10 Prinsarna - Kungarna'),
-(12, 'Bandy', '2026-07-22', '17:30 Prinsarna - Prinsessorna <br> 17:50 Kungarna - Drottningarna <br> 18:10 Drottningarna - Princessorna'),
-(13, 'Dragkamp', '2026-07-22', '17:40 Prinsarna - Princessorna <br> 18:00 Kungarna - Drottningarna <br> 18:20 Drottningarna - Princessorna'),
-(14, 'Fotboll', '2026-07-23', '16:00 Kungarna - Princessorna <br> 16:20 Prinsarna - Drottningarna <br> 16:40 Prinsarna - Princessorna <br> 17:00 Kungarna - Drottningarna <br> 17:20 Drottningarna - Princessorna'),
-(15, 'Bandy', '2026-07-23', '16:00 Prinsarna - Drottningarna <br> 16:20 Kungarna - Princessorna <br> 16:40 Kungarna - Drottningarna <br> 17:20 Drottningarna - Princessorna'),
-(16, 'Dragkamp', '2026-07-23', '16:10 Prinsarna - Drottningarna <br> 16:30 Kungarna - Princessorna <br> 16:50 Kungarna - Drottningarna <br> 17:30 Drottningarna - Princessorna');
-
---
--- Index för dumpade tabeller
+-- Indexes for dumped tables
 --
 
 --
--- Index för tabell `activiteter`
+-- Indexes for table `activiteter`
 --
 ALTER TABLE `activiteter`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index för tabell `dagstema`
+-- Indexes for table `dagstema`
 --
 ALTER TABLE `dagstema`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index för tabell `sport`
+-- Indexes for table `sport`
 --
 ALTER TABLE `sport`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT för dumpade tabeller
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT för tabell `activiteter`
+-- AUTO_INCREMENT for table `activiteter`
 --
 ALTER TABLE `activiteter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
--- AUTO_INCREMENT för tabell `dagstema`
+-- AUTO_INCREMENT for table `dagstema`
 --
 ALTER TABLE `dagstema`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT för tabell `sport`
+-- AUTO_INCREMENT for table `sport`
 --
 ALTER TABLE `sport`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
